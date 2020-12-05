@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    fun animate(imageView: ImageView, degree: Float, duration: Int){
+    fun animate(imageView: ImageView, degree: Float, duration: Long){
         imageView.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             val x = motionEvent.x
             val y = motionEvent.y
@@ -31,23 +31,23 @@ class MainActivity : AppCompatActivity(){
                     MotionEvent.ACTION_DOWN -> {
                         if (x >= imageView.width / 3 * 2) {  // нажатие на правую часть view
                             imageView.animate().withLayer()
-                                .rotationY(15f)
-                                .setDuration(500).start()
+                                .rotationY(degree)
+                                .setDuration(duration).start()
                         }
                         if (x <= imageView.width / 3) {  // нажатие на левую часть view
                             imageView.animate().withLayer()
-                                .rotationY(-15f)
-                                .setDuration(500).start()
+                                .rotationY(-degree)
+                                .setDuration(duration).start()
                         }
                         if (y <= imageView.height / 3) {  // нажатие на верхнюю часть view
                             imageView.animate().withLayer()
-                                .rotationX(15f)
-                                .setDuration(500).start()
+                                .rotationX(degree)
+                                .setDuration(duration).start()
                         }
                         if (y >= imageView.height / 3 * 2) {  // нажатие на нижнюю часть view
                             imageView.animate().withLayer()
-                                .rotationX(-15f)
-                                .setDuration(500).start()
+                                .rotationX(-degree)
+                                .setDuration(duration).start()
                         }
                     }
                     MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
